@@ -5,7 +5,7 @@
  *
  * @author     Patrick Oliveira do Carmo <patrick.carmo@aluno.ufop.edu.br>
  * @copyright  Copyright (C) - 2020 - Patrick Oliveira do Carmo
- * @license    GNU General Public License version 2 or later; see LICENSE.txt.txt
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
  * @link       https://triki.ufop.br/
  */
 

@@ -5,16 +5,15 @@
  *
  * @author     Patrick Oliveira do Carmo <patrick.carmo@aluno.ufop.edu.br>
  * @copyright  Copyright (C) - 2020 - Patrick Oliveira do Carmo
- * @license    GNU General Public License version 2 or later; see LICENSE.txt.txt
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
  * @link       https://triki.ufop.br/
  */
 
 defined('_JEXEC') or die;
 
 // Access check.
-if (!JFactory::getUser()->authorise('core.edit.own', 'com_dxfontawesome'))
-{
-	throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
+if (!JFactory::getUser()->authorise('core.edit.own', 'com_dxfontawesome')) {
+    throw new Exception(JText::sprintf('JERROR_ALERTNOAUTHOR'));
 }
 
 // Include dependancies
