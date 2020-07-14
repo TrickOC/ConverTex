@@ -1,0 +1,39 @@
+#ct_insert {
+    float: right;
+}
+
+#ct_popup {
+    margin: 5px;
+}
+
+#ct_preview_box {
+    height: auto;
+    padding: .6rem .75rem;
+}
+
+#ct_toolbar mjx-container {
+    display: inline !important;
+    margin: 0 !important;
+}
+
+.latex mjx-container {
+    display: inline !important;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+*:focus {
+    outline: transparent;
+}

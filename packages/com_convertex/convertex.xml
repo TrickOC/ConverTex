@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" version="3.8" method="upgrade">
+    <name>COM_CONVERTEX</name>
+    <creationDate>12 May 2020</creationDate>
+    <author>Patrick Oliveira do Carmo</author>
+    <authorEmail>patrick.carmo@aluno.ufop.edu.br</authorEmail>
+    <authorUrl>https://triki.ufop.br/</authorUrl>
+    <copyright>Copyright (C) - 2020 - Patrick Oliveira do Carmo.</copyright>
+    <license>GNU General Public License version 2 or later;</license>
+    <version>1.0</version>
+    <description>COM_CONVERTEX_XML_DESCRIPTION</description>
+
+    <!-- Frond-end files -->
+    <files folder="components/com_convertex">
+        <folder>helpers</folder>
+        <folder>views</folder>
+        <folder>language</folder>
+        <filename>controller.php</filename>
+        <filename>convertex.php</filename>
+        <filename>index.html</filename>
+        <filename>LICENSE.txt</filename>
+    </files>
+
+    <!-- Back-end files -->
+    <administration>
+        <menu link="option=com_convertex">ConverTex</menu>
+        <files folder="administrator/components/com_convertex">
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>views</folder>
+            <folder>language</folder>
+            <filename>access.xml</filename>
+            <filename>controller.php</filename>
+            <filename>convertex.php</filename>
+            <filename>index.html</filename>
+        </files>
+        <languages folder="administrator/components/com_convertex/language">
+            <language tag="en-GB">en-GB/en-GB.com_convertex.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_convertex.sys.ini</language>
+            <language tag="pt-BR">pt-BR/pt-BR.com_convertex.ini</language>
+            <language tag="pt-BR">pt-BR/pt-BR.com_convertex.sys.ini</language>
+        </languages>
+        <languages folder="components/com_convertex/language">
+            <language tag="en-GB">en-GB/en-GB.com_convertex.ini</language>
+            <language tag="pt-BR">pt-BR/pt-BR.com_convertex.ini</language>
+        </languages>
+    </administration>
+</extension>

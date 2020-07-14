@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<latex>
+    <group name="Trigonometric Functions">
+        <function>\sin{x}</function>
+        <function>\cos{x}</function>
+        <function>\tan{x}</function>
+        <function>\cot{x}</function>
+        <function>\arcsin{x}</function>
+        <function>\arccos{x}</function>
+        <function>\arctan{x}</function>
+        <function>\arccot{x}</function>
+        <function>\sinh{x}</function>
+        <function>\cosh{x}</function>
+        <function>\tanh{x}</function>
+        <function>\coth{x}</function>
+        <function>\sec{x}</function>
+        <function>\csc{x}</function>
+    </group>
+</latex>

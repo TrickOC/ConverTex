@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.8" group="content" method="upgrade">
+    <name>PLG_CONVERTEX</name>
+    <creationDate>27 March 2020</creationDate>
+    <author>Patrick Oliveira do Carmo</author>
+    <authorEmail>patrick.carmo@aluno.ufop.edu.br</authorEmail>
+    <authorUrl>https://triki.ufop.br/</authorUrl>
+    <copyright>Copyright (C) - 2020 - Patrick Oliveira do Carmo.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>1.0.0</version>
+    <description>PLG_CONVERTEX_XML_DESCRIPTION</description>
+
+    <!-- Plugin files -->
+    <files>
+        <filename plugin="convertex">convertex.php</filename>
+        <filename>LICENSE.txt</filename>
+        <folder>language</folder>
+        <folder>js</folder>
+        <folder>css</folder>
+    </files>
+
+    <!-- Language files -->
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_content_convertex.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_content_convertex.sys.ini</language>
+        <language tag="pt-BR">pt-BR/pt-BR.plg_content_convertex.ini</language>
+        <language tag="pt-BR">pt-BR/pt-BR.plg_content_convertex.sys.ini</language>
+    </languages>
+
+    <!-- Config parameter -->
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="optrender" type="radio" default="mathjax" label="PLG_CONVERTEX_OPTRENDER"
+                       description="PLG_CONVERTEX_OPTRENDER_DESC" class="radio btn-group">
+                    <option value="mathjax">MathJax</option>
+                    <option value="mimetex">MimeTex</option>
+                </field>
+                <field
+                        name="mathjax"
+                        type="text"
+                        default=""
+                        label="PLG_CONVERTEX_MATHJAX_URL"
+                        description="PLG_CONVERTEX_MATHJAX_URL_DESC"
+                />
+                <field
+                        name="mimetex"
+                        type="text"
+                        default=""
+                        label="PLG_CONVERTEX_MIMETEX_URL"
+                        description="PLG_CONVERTEX_MIMETEX_URL_DESC"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

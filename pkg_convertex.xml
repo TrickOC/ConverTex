@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.7" method="upgrade">
+    <packagename>ConverTex</packagename>
+    <creationDate>12 May 2020</creationDate>
+    <author>Patrick Oliveira do Carmo</author>
+    <authorEmail>patrick.carmo@aluno.ufop.edu.br</authorEmail>
+    <authorUrl>https://triki.ufop.br/</authorUrl>
+    <url>https://triki.ufop.br/</url>
+    <copyright>Copyright (C) - 2020 - Patrick Oliveira do Carmo.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>1.0</version>
+    <packager>Joomla! ConverTex</packager>
+    <packagerurl>https://triki.ufop.br/</packagerurl>
+    <description><![CDATA[
+        <p class="alert alert-info">This package includes the plug-in to render your texts in LaTeX, adds a button to the editors of an editor that simplifies the entry of mathematical equations and add-ons for the operation of the entire system.</p>
+        <p class="alert alert-info">Please <a class="btn btn-success" href="index.php?option=com_plugins&view=plugins&filter_search=convertex">ENABLE</a> "Content - ConverTex" and "Button - ConverTex" plugins.</p>
+    ]]></description>
+
+    <files folder="packages">
+        <file type="component" id="com_convertex">com_convertex.zip</file>
+        <file type="plugin" id="convertex" group="content">plg_content-convertex.zip</file>
+        <file type="plugin" id="editex" group="editors-xtd">plg_editors-xtd_editex.zip</file>
+    </files>
+
+</extension>
