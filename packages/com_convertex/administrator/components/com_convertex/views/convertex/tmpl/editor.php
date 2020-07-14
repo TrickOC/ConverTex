@@ -33,22 +33,33 @@ JHtml::_('script', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js',
                 Disciplines
             </button>
             <div class="dropdown-menu" aria-labelledby="selector">
-                <a class="dropdown-item active"
-                   href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_BASIC_MATH') ?></a>
-                <a class="dropdown-item"
-                   href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_PRE-ALGEBRA') ?></a>
-                <a class="dropdown-item"
-                   href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_TRIGONOMETRY') ?></a>
-                <a class="dropdown-item"
-                   href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_PRECALCULUS') ?></a>
-                <a class="dropdown-item" href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_CALCULUS') ?></a>
-                <a class="dropdown-item"
-                   href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_STATISTICS') ?></a>
-                <a class="dropdown-item"
-                   href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_FINITE_MATH') ?></a>
-                <a class="dropdown-item"
-                   href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_LINEAR_ALGEBRA') ?></a>
-                <a class="dropdown-item" href="#"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_CHEMISTRY') ?></a>
+                <a class="dropdown-item active" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_BASIC_MATH') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_PRE-ALGEBRA') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_TRIGONOMETRY') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_PRECALCULUS') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_CALCULUS') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_STATISTICS') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_FINITE_MATH') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_LINEAR_ALGEBRA') ?>
+                </a>
+                <a class="dropdown-item" href="#">
+					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_CHEMISTRY') ?>
+                </a>
             </div>
         </div>
     </div>
