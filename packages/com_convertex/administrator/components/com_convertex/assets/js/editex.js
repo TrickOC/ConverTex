@@ -38,7 +38,7 @@ function ready(fn) {
     if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
         fn();
     } else {
-        document.addEventListener('DOMContentLoaded', fn);
+        document.addEventListener("DOMContentLoaded", fn);
     }
 }
 
@@ -49,14 +49,14 @@ function typeset(code) {
             code();
             return MathJax.typesetPromise()
         })
-        .catch((err) => console.log('Typeset failed: ' + err.message));
+        .catch((err) => console.log(`Typeset failed: ${err.message}`));
     return MathJax.startup.promise;
 }
 
 // Function for insert the final equation in the text of the editor
 function insertEditex(insert) {
     const editor = $('#editor_name').val();
-    window.parent.jInsertEditorText('{tex}' + insert + '{/tex}', editor);
+    window.parent.jInsertEditorText(`{tex}${insert}{/tex}`, editor);
     window.parent.SqueezeBox.close();
     return false;
 }
@@ -75,35 +75,35 @@ function typeInTextarea(element, newText) {
 
 // Main funtion of editor(editex)
 function editex() {
-    let discipline_selector = $('#ct_discipline .btn-group');
-    let toolbar_buttons = $('#ct_toolbar :button');
-    let editareaBox = $('#ct_editarea_box');
-    let previewBox = $('#ct_preview_box span');
-    let insert = $('#ct_insert');
+    let discipline_selector = $("#ct_discipline .btn-group");
+    let toolbar_buttons = $("#ct_toolbar :button");
+    let editareaBox = $("#ct_editarea_box");
+    let previewBox = $("#ct_preview_box span");
+    let insert = $("#ct_insert");
 
-    discipline_selector.find(':button').text(discipline_selector.find('.active').text());
+    discipline_selector.find(":button").text(discipline_selector.find(".active").text());
 
-    discipline_selector.find('a').click(function () {
-        if ($(this).attr('class').search('active') <= 0) {
-            discipline_selector.find('.active').removeClass('active');
-            $(this).addClass('active');
-            discipline_selector.find(':button').text($(this).text());
+    discipline_selector.find('a').on("click", function () {
+        if ($(this).attr("class").search("active") <= 0) {
+            discipline_selector.find(".active").removeClass("active");
+            $(this).addClass("active");
+            discipline_selector.find(":button").text($(this).text());
         }
         return false;
     });
 
     // Set the event for click an button of the toolbar
-    toolbar_buttons.click(function () {
-        let text = $(this).attr('data-operator');
+    toolbar_buttons.on("click", function () {
+        let text = $(this).attr("data-operator");
         typeInTextarea(editareaBox, text);
         refreshPreview();
     });
 
     // Set the events for editareabox
-    editareaBox.keyup(refreshPreview);
-    editareaBox.change(refreshPreview);
+    editareaBox.on("keyup", refreshPreview);
+    editareaBox.on("change", refreshPreview);
 
-    insert.click(function () {
+    insert.on("click", function () {
         insertEditex(editareaBox.val());
     });
 
