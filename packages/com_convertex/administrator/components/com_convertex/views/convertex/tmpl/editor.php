@@ -29,12 +29,10 @@ JHtml::_('script', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js',
          tabindex="-1">
         <div class="btn-group" role="group" aria-label="Discipline selector">
             <div class="input-group-prepend">
-                <span class="input-group-text"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE') ?></span>
+                <span class="input-group-text ct_text_discipline"><?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE') ?></span>
             </div>
-            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="selector" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Disciplines
-            </button>
+            <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="selector" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"></button>
             <div class="dropdown-menu" aria-labelledby="selector">
                 <a class="dropdown-item active" href="#">
 					<?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE_BASIC_MATH') ?>

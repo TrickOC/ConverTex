@@ -20,6 +20,16 @@
     display: inline !important;
 }
 
+#ct_discipline {
+    justify-content: flex-end;
+}
+
+.ct_text_discipline {
+    border-color: #dc3545;
+    color: #dc3545;
+    background-color: #FFFFFF;
+}
+
 .clearfix {
     *zoom: 1;
 }
