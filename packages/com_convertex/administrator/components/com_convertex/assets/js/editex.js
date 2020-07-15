@@ -73,6 +73,13 @@ function typeInTextarea(element, newText) {
     element.focus();
 }
 
+// Function for refresh content in the element
+function refreshContent(element, val) {
+    typeset(() => {
+        element.html('\\[' + val + '\\]');
+    });
+}
+
 // Main funtion of editor(editex)
 function editex() {
     let discipline_selector = $("#ct_discipline .btn-group");
@@ -100,19 +107,12 @@ function editex() {
     });
 
     // Set the events for editareabox
-    editareaBox.on("keyup", refreshPreview);
-    editareaBox.on("change", refreshPreview);
+    editareaBox.on("keyup", refreshContent(previewBox, editareaBox.val()));
+    editareaBox.on("change", refreshContent(previewBox, editareaBox.val()));
 
     insert.on("click", function () {
         insertEditex(editareaBox.val());
     });
-
-    // Function for refresh content in the preview box
-    function refreshPreview() {
-        typeset(() => {
-            previewBox.html('\\[' + editareaBox.val() + '\\]');
-        });
-    }
 }
 
 // Call editex function before the page is loaded
