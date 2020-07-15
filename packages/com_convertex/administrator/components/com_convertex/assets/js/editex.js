@@ -81,7 +81,7 @@ function refreshContent(element, val) {
 }
 
 function createToolbar(discipline) {
-    let html
+    let html = "<div class='alert alert-danger' role='alert'>ERRO</div>";
     switch (discipline) {
         case "math":
             break;
