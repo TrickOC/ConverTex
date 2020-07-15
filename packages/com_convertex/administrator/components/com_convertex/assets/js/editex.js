@@ -80,15 +80,46 @@ function refreshContent(element, val) {
     });
 }
 
+function createToolbar(discipline) {
+    let html
+    switch (discipline) {
+        case "math":
+            break;
+        case "pre-algebra":
+            break;
+        case "trigonometry":
+            break;
+        case "pre-calculus":
+            break;
+        case "calculus":
+            break;
+        case "statistics":
+            break;
+        case "finite-math":
+            break;
+        case "linear-algebra":
+            break;
+        case "chemistry":
+            break;
+        case "physics":
+            break;
+        default:
+    }
+    return html;
+}
+
 // Main funtion of editor(editex)
 function editex() {
     let discipline_selector = $("#ct_discipline .btn-group");
-    let toolbar_buttons = $("#ct_toolbar :button");
+    let discipline_selected = discipline_selector.find(".active");
+    let toolbar = $("#ct_toolbar :button");
+    let toolbar_buttons = toolbar.find("button");
     let editareaBox = $("#ct_editarea_box");
     let previewBox = $("#ct_preview_box span");
     let insert = $("#ct_insert");
 
-    discipline_selector.find(":button").text(discipline_selector.find(".active").text());
+    discipline_selector.find(":button").text(discipline_selected.text());
+    toolbar.append(createToolbar(discipline_selected.data("discipline")));
 
     discipline_selector.find('a').on("click", function () {
         if ($(this).attr("class").search("active") <= 0) {
