@@ -74,38 +74,55 @@ function typeInTextarea(element, newText) {
 }
 
 // Function for refresh content in the element
-function refreshContent(element, val) {
+function refreshTexContent(element, val) {
     typeset(() => {
         element.html('\\[' + val + '\\]');
     });
 }
 
-function createToolbar(discipline) {
-    let html = "<div class='alert alert-danger' role='alert'>ERRO</div>";
-    switch (discipline) {
-        case "math":
-            break;
-        case "pre-algebra":
-            break;
-        case "trigonometry":
-            break;
-        case "pre-calculus":
-            break;
-        case "calculus":
-            break;
-        case "statistics":
-            break;
-        case "finite-math":
-            break;
-        case "linear-algebra":
-            break;
-        case "chemistry":
-            break;
-        case "physics":
-            break;
-        default:
-    }
-    return html;
+function createToolbar(discipline, element) {
+    $.ajax({
+        type: "GET",
+        url: "administrator/components/com_convertex/assets/latex/toolbar.xml",
+        dataType: "xml",
+        success: function (xml) {
+            $(xml).find("[name='" + discipline + "']")
+                .find("group").each(function () {
+                $("<div></div>")
+                    .addClass("btn-group")
+                    .addClass("btn-group-sm")
+                    .addClass("mr-1")
+                    .attr("role", "group")
+                    .attr("aria-label", $(this).attr("name"))
+                    .append($(this).find("button").each(function () {
+                        return $("<button></button>")
+                            .addClass("btn")
+                            .addClass("btn-secondary")
+                            .attr("type", "button")
+                            .attr("data-insert", $(this).attr("insert"))
+                            .text('\\[' + $(this).text() + '\\]');
+                    }))
+                    .appendTo(element);
+            });
+            typeset(() => {
+                element.fadeIn()
+                if (!element.children().is("div")) {
+                    $("<p></p>")
+                        .addClass("alert").addClass("alert-danger")
+                        .attr("role", "alert")
+                        .text("ERRO in build the toolbar")
+                        .appendTo(element);
+                }
+            });
+        },
+        error: function () {
+            $("<p></p>")
+                .addClass("alert").addClass("alert-danger")
+                .attr("role", "alert")
+                .text("ERRO in request XML")
+                .appendTo(element);
+        }
+    });
 }
 
 // Main funtion of editor(editex)
@@ -119,13 +136,16 @@ function editex() {
     let insert = $("#ct_insert");
 
     discipline_selector.find(":button").text(discipline_selected.text());
-    toolbar.append(createToolbar(discipline_selected.data("discipline")));
+    createToolbar(discipline_selected.data("discipline"), toolbar);
 
     discipline_selector.find('a').on("click", function () {
         if ($(this).attr("class").search("active") <= 0) {
             discipline_selector.find(".active").removeClass("active");
             $(this).addClass("active");
             discipline_selector.find(":button").text($(this).text());
+            toolbar.fadeOut();
+            toolbar.empty();
+            createToolbar(discipline_selected.data("discipline"), toolbar);
         }
         return false;
     });
@@ -134,12 +154,12 @@ function editex() {
     toolbar_buttons.on("click", function () {
         let text = $(this).attr("data-operator");
         typeInTextarea(editareaBox, text);
-        refreshPreview();
+        refreshTexContent(previewBox, editareaBox.val());
     });
 
     // Set the events for editareabox
-    editareaBox.on("keyup", refreshContent(previewBox, editareaBox.val()));
-    editareaBox.on("change", refreshContent(previewBox, editareaBox.val()));
+    editareaBox.on("keyup", refreshTexContent(previewBox, editareaBox.val()));
+    editareaBox.on("change", refreshTexContent(previewBox, editareaBox.val()));
 
     insert.on("click", function () {
         insertEditex(editareaBox.val());

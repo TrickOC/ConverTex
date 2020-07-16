@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<editex>
+    <toolbar name="math">
+        <group name="Delimiters">
+            <button insert="(">(</button>
+            <button insert=")">)</button>
+            <button insert="\mid">\mid</button>
+            <button insert="[">[</button>
+            <button insert="]">]</button>
+        </group>
+        <group name="Functions">
+            <button insert="\sqrt{x}">\sqrt{\Box}</button>
+            <button insert="\sqrt[n]{x}">\sqrt[\Box]{\Box}</button>
+            <button insert="\sfrac{x}{y}">\sfrac{\Box}{\Box}</button>
+            <button insert="\frac{x}{y}">\frac{\Box}{\Box}</button>
+            <button insert="\binom{n}{k}">\binom{\Box}{\Box}</button>
+            <button insert="^{n}">x^{\Box}</button>
+            <button insert="_{n}">x_{\Box}</button>
+        </group>
+        <group name="Relation Symbols">
+            <button insert="<">&lt;</button>
+            <button insert=">">&gt;</button>
+            <button insert="\leq">\leq</button>
+            <button insert="\geq">\geq</button>
+            <button insert="=">=</button>
+            <button insert="\neq">\neq</button>
+            <button insert="\equiv">\equiv</button>
+            <button insert="\approx">\approx</button>
+            <button insert="\simeq">\simeq</button>
+            <button insert="\sim">\sim</button>
+            <button insert="\cong">\cong</button>
+            <button insert="\therefore">\therefore</button>
+        </group>
+        <group name="Greek Letters">
+            <button insert="\alpha">\alpha</button>
+            <button insert="\beta">\beta</button>
+            <button insert="\theta">\theta</button>
+            <button insert="\kappa">\kappa</button>
+            <button insert="\lambda">\lambda</button>
+            <button insert="\Omega">\Omega</button>
+            <button insert="\pi">\pi</button>
+        </group>
+    </toolbar>
+</editex>
