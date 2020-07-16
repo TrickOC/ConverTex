@@ -1,55 +1,10 @@
-// Config of the MathJax
-window.MathJax = {
-    options: {
-        ignoreHtmlClass: 'tex2jax_ignore',
-        processHtmlClass: 'tex2jax_process',
-        skipHtmlTags: [
-            'script', 'noscript', 'style', 'textarea', 'pre',
-            'code', 'annotation', 'annotation-xml'
-        ],
-        renderActions: {
-            addMenu: [0, '', '']
-        }
-    },
-    loader: {
-        load: ['input/tex-base', 'output/svg', '[tex]/noerrors', '[tex]/physics', '[tex]/colorV2']
-    },
-    tex: {
-        packages: {'[+]': ['noerrors', 'physics', 'colorV2']}
-    },
-    svg: {
-        matchFontHeight: true,
-        displayAlign: 'center',
-        fontCache: 'global'
-    },
-    startup: {
-        ready: () => {
-            console.log('MathJax is loaded, but not yet initialized');
-            MathJax.startup.defaultReady();
-            MathJax.startup.promise.then(() => {
-                console.log('MathJax initial typesetting complete');
-            });
-        }
-    }
-};
-
-// Dummy function for call another function before the page is completely loaded
-function ready(fn) {
-    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-        fn();
-    } else {
-        document.addEventListener("DOMContentLoaded", fn);
-    }
-}
-
-// Function for MathJax work in async ambient
 function typeset(code) {
     MathJax.startup.promise = MathJax.startup.promise
         .then(() => {
             code();
             return MathJax.typesetPromise()
         })
-        .catch((err) => console.log(`Typeset failed: ${err.message}`));
+        .catch((err) => console.log('Typeset failed: ' + err.message));
     return MathJax.startup.promise;
 }
 
@@ -76,35 +31,36 @@ function typeInTextarea(element, newText) {
 // Function for refresh content in the element
 function refreshTexContent(element, val) {
     typeset(() => {
-        element.html('\\[' + val + '\\]');
+        element.text('\\[' + val + '\\]');
     });
 }
 
-function createToolbar(discipline, element) {
-    $.ajax({
-        type: "GET",
-        url: "administrator/components/com_convertex/assets/latex/toolbar.xml",
-        dataType: "xml",
-        success: function (xml) {
-            $(xml).find("[name='" + discipline + "']")
-                .find("group").each(function () {
-                $("<div></div>")
-                    .addClass("btn-group")
-                    .addClass("btn-group-sm")
-                    .addClass("mr-1")
-                    .attr("role", "group")
-                    .attr("aria-label", $(this).attr("name"))
-                    .append($(this).find("button").each(function () {
-                        return $("<button></button>")
-                            .addClass("btn")
-                            .addClass("btn-secondary")
-                            .attr("type", "button")
-                            .attr("data-insert", $(this).attr("insert"))
-                            .text('\\[' + $(this).text() + '\\]');
-                    }))
-                    .appendTo(element);
-            });
-            typeset(() => {
+$(function () {
+    // Function for create the toolbar
+    function createToolbar(discipline, element) {
+        $.ajax({
+            type: "GET",
+            url: "administrator/components/com_convertex/assets/latex/toolbar.xml",
+            dataType: "xml",
+            success: function (xml) {
+                $(xml).find("toolbar[name='" + discipline + "']")
+                    .find("group").each(function () {
+                    $("<div></div>")
+                        .addClass("btn-group")
+                        .addClass("btn-group-sm")
+                        .addClass("mr-1")
+                        .attr("role", "group")
+                        .attr("aria-label", $(this).attr("name"))
+                        .append($(this).find("button").each(function () {
+                            return $("<button></button>")
+                                .addClass("btn")
+                                .addClass("btn-secondary")
+                                .attr("type", "button")
+                                .attr("data-insert", $(this).attr("insert"))
+                                .text('\\[' + $(this).text() + '\\]');
+                        }))
+                        .appendTo(element);
+                });
                 element.fadeIn()
                 if (!element.children().is("div")) {
                     $("<p></p>")
@@ -113,20 +69,17 @@ function createToolbar(discipline, element) {
                         .text("ERRO in build the toolbar")
                         .appendTo(element);
                 }
-            });
-        },
-        error: function () {
-            $("<p></p>")
-                .addClass("alert").addClass("alert-danger")
-                .attr("role", "alert")
-                .text("ERRO in request XML")
-                .appendTo(element);
-        }
-    });
-}
+            },
+            error: function () {
+                $("<p></p>")
+                    .addClass("alert").addClass("alert-danger")
+                    .attr("role", "alert")
+                    .text("ERRO in request XML")
+                    .appendTo(element);
+            }
+        });
+    }
 
-// Main funtion of editor(editex)
-function editex() {
     let discipline_selector = $("#ct_discipline .btn-group");
     let discipline_selected = discipline_selector.find(".active");
     let toolbar = $("#ct_toolbar :button");
@@ -164,7 +117,4 @@ function editex() {
     insert.on("click", function () {
         insertEditex(editareaBox.val());
     });
-}
-
-// Call editex function before the page is loaded
-ready(editex);
+});

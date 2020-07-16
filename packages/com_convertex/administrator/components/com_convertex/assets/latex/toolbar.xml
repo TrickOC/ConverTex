@@ -18,8 +18,8 @@
             <button insert="_{n}">x_{\Box}</button>
         </group>
         <group name="Relation Symbols">
-            <button insert="<">&lt;</button>
-            <button insert=">">&gt;</button>
+            <button insert="&lt;">&lt;</button>
+            <button insert="&gt;">&gt;</button>
             <button insert="\leq">\leq</button>
             <button insert="\geq">\geq</button>
             <button insert="=">=</button>
