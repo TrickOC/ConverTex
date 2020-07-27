@@ -21,8 +21,7 @@ JHtml::_('script', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootst
 JHtml::_('stylesheet', 'administrator/components/com_convertex/assets/css/editex.css');
 JHtml::_('script', 'administrator/components/com_convertex/assets/js/editex.js');
 
-// MathJax files
-JHtml::_('script', 'administrator/components/com_convertex/assets/js/mathjax-options.js');
+// MathJax file
 JHtml::_('script', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js', array('id' => 'MathJax-script'), array('refer' => 'refer'));
 ?>
 <div id="ct_popup">
