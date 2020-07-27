@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <editex>
     <toolbar name="math">
-        <group name="Delimiters">
-            <button insert="(">(</button>
-            <button insert=")">)</button>
-            <button insert="\mid">\mid</button>
-            <button insert="[">[</button>
-            <button insert="]">]</button>
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
         </group>
-        <group name="Functions">
-            <button insert="\sqrt{x}">\sqrt{\Box}</button>
-            <button insert="\sqrt[n]{x}">\sqrt[\Box]{\Box}</button>
-            <button insert="\sfrac{x}{y}">\sfrac{\Box}{\Box}</button>
-            <button insert="\frac{x}{y}">\frac{\Box}{\Box}</button>
-            <button insert="\binom{n}{k}">\binom{\Box}{\Box}</button>
-            <button insert="^{n}">x^{\Box}</button>
-            <button insert="_{n}">x_{\Box}</button>
+        <group name="Functions" shortname="func">
+            <item insert="\sqrt{x}">\sqrt{\Box}</item>
+            <item insert="\sqrt[n]{x}">\sqrt[\Box]{\Box}</item>
+            <item insert="\frac{x}{y}">\frac{\Box}{\Box}</item>
+            <item insert="\binom{n}{k}">\binom{\Box}{\Box}</item>
+            <item insert="^{n}">x^{\Box}</item>
+            <item insert="_{n}">x_{\Box}</item>
         </group>
-        <group name="Relation Symbols">
-            <button insert="&lt;">&lt;</button>
-            <button insert="&gt;">&gt;</button>
-            <button insert="\leq">\leq</button>
-            <button insert="\geq">\geq</button>
-            <button insert="=">=</button>
-            <button insert="\neq">\neq</button>
-            <button insert="\equiv">\equiv</button>
-            <button insert="\approx">\approx</button>
-            <button insert="\simeq">\simeq</button>
-            <button insert="\sim">\sim</button>
-            <button insert="\cong">\cong</button>
-            <button insert="\therefore">\therefore</button>
+        <group name="Relation Symbols" shortname="rel_sym">
+            <item insert="&lt;">&lt;</item>
+            <item insert="&gt;">&gt;</item>
+            <item insert="\leq">\leq</item>
+            <item insert="\geq">\geq</item>
+            <item insert="=">=</item>
+            <item insert="\neq">\neq</item>
+            <item insert="\equiv">\equiv</item>
+            <item insert="\approx">\approx</item>
+            <item insert="\simeq">\simeq</item>
+            <item insert="\sim">\sim</item>
+            <item insert="\cong">\cong</item>
+            <item insert="\therefore">\therefore</item>
         </group>
-        <group name="Greek Letters">
-            <button insert="\alpha">\alpha</button>
-            <button insert="\beta">\beta</button>
-            <button insert="\theta">\theta</button>
-            <button insert="\kappa">\kappa</button>
-            <button insert="\lambda">\lambda</button>
-            <button insert="\Omega">\Omega</button>
-            <button insert="\pi">\pi</button>
+        <group name="Greek Letters" shortname="gr_let">
+            <item insert="\alpha">\alpha</item>
+            <item insert="\beta">\beta</item>
+            <item insert="\theta">\theta</item>
+            <item insert="\kappa">\kappa</item>
+            <item insert="\lambda">\lambda</item>
+            <item insert="\Omega">\Omega</item>
+            <item insert="\pi">\pi</item>
         </group>
     </toolbar>
 </editex>

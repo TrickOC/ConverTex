@@ -28,6 +28,7 @@ window.MathJax = {
             MathJax.startup.defaultReady();
             MathJax.startup.promise.then(() => {
                 console.log('MathJax initial typesetting complete');
+                editex();
             });
         }
     }
@@ -52,7 +53,7 @@ function insertEditex(insert) {
 }
 
 // Function for refresh content in the element
-function refreshTexContent(element, val) {
+function refreshTexPreview(element, val) {
     typeset(() => {
         element.text('\\[' + val + '\\]');
     });
@@ -85,15 +86,19 @@ function createToolbar(discipline, element) {
                     .addClass("mr-1")
                     .attr("role", "group")
                     .attr("aria-label", $(this).attr("name"))
-                    .append($(this).find("button").each(function () {
+                    .attr("id", "ct_toolbar_group_" + $(this).attr("shortname"))
+                    .appendTo(element);
+                $(this).find("item").each(function () {
+                    typeset(() => {
                         $("<button></button>")
                             .addClass("btn")
                             .addClass("btn-secondary")
                             .attr("type", "button")
                             .attr("data-insert", $(this).attr("insert"))
-                            .text('\\[' + $(this).text() + '\\]');
-                    }))
-                    .appendTo(element);
+                            .text('\\[' + $(this).text() + '\\]')
+                            .appendTo("#ct_toolbar_group_" + $(this).parent().attr("shortname"));
+                    });
+                })
             });
             element.fadeIn();
             if (!element.children().is("div")) {
@@ -102,13 +107,12 @@ function createToolbar(discipline, element) {
                     .attr("role", "alert")
                     .text("ERRO in build the toolbar")
                     .appendTo(element);
-                $("<p></p>").text(xml).appendTo(element);
             }
         }
     });
 }
 
-$(function () {
+function editex() {
     let discipline_selector = $("#ct_discipline .btn-group");
     let discipline_selected = discipline_selector.find(".active");
     let toolbar = $("#ct_toolbar");
@@ -134,20 +138,20 @@ $(function () {
 
     // Set the event for click an button of the toolbar
     toolbar_buttons.on("click", function () {
-        let text = $(this).attr("data-operator");
+        let text = $(this).attr("data-insert");
         typeInTextarea(editareaBox, text);
-        refreshTexContent(previewBox, editareaBox.val());
+        refreshTexPreview(previewBox, editareaBox.val());
     });
 
     // Set the events for editareabox
     editareaBox.on("keyup", function () {
-        refreshTexContent(previewBox, editareaBox.val())
+        refreshTexPreview(previewBox, editareaBox.val())
     });
     editareaBox.on("change", function () {
-        refreshTexContent(previewBox, editareaBox.val());
+        refreshTexPreview(previewBox, editareaBox.val());
     });
 
     insert.on("click", function () {
         insertEditex(editareaBox.val());
     });
-});
+}
