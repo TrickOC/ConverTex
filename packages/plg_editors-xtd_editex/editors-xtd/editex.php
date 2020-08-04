@@ -64,7 +64,7 @@ class PlgButtonEdiTex extends JPlugin
 		$button->link    = $link;
 		$button->text    = 'ConverTex';
 		$button->name    = 'edit';
-		$button->options = "{handler: 'iframe', size: {x: 900, y: 400}}";
+		$button->options = "{handler: 'iframe', size: {x: 950, y: 500}}";
 
 		return $button;
 	}

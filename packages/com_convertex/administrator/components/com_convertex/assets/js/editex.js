@@ -78,36 +78,50 @@ function createToolbar(discipline, element) {
         url: "administrator/components/com_convertex/assets/latex/toolbar.xml",
         dataType: "xml",
         success: function (xml) {
-            $(xml).find("toolbar[name='" + discipline + "']")
-                .find("group").each(function () {
-                $("<div></div>")
-                    .addClass("btn-group")
-                    .addClass("btn-group-sm")
-                    .addClass("mr-1")
-                    .attr("role", "group")
-                    .attr("aria-label", $(this).attr("name"))
-                    .attr("id", "ct_toolbar_group_" + $(this).attr("shortname"))
-                    .appendTo(element);
-                $(this).find("item").each(function () {
-                    typeset(() => {
-                        $("<button></button>")
-                            .addClass("btn")
-                            .addClass("btn-secondary")
-                            .attr("type", "button")
-                            .attr("data-insert", $(this).attr("insert"))
-                            .text('\\[' + $(this).text() + '\\]')
-                            .appendTo("#ct_toolbar_group_" + $(this).parent().attr("shortname"));
-                    });
-                })
+            let toolbar = "";
+            $(xml).find("discipline").each(function () {
+                if ($(this).attr("name") === discipline) {
+                    toolbar = $(this);
+                }
             });
-            element.fadeIn();
-            if (!element.children().is("div")) {
+            if (toolbar === "") {
                 $("<p></p>")
                     .addClass("alert").addClass("alert-danger")
                     .attr("role", "alert")
-                    .text("ERRO in build the toolbar")
+                    .text("ERRO in build the toolbar for discipline " + discipline)
                     .appendTo(element);
+            } else {
+                toolbar.find("group").each(function () {
+                    $("<div></div>")
+                        .addClass("btn-group")
+                        .addClass("btn-group-sm")
+                        .attr("role", "group")
+                        .attr("aria-label", $(this).attr("name"))
+                        .attr("id", "ct_toolbar_group_" + $(this).attr("shortname"))
+                        .appendTo(element);
+                    $(this).find("item").each(function () {
+                        typeset(() => {
+                            $("<button></button>")
+                                .addClass("btn")
+                                .addClass("btn-primary")
+                                .attr("type", "button")
+                                .attr("data-insert", $(this).attr("insert"))
+                                .text('\\[' + $(this).text() + '\\]')
+                                .appendTo("#ct_toolbar_group_" + $(this).parent().attr("shortname"));
+                        });
+                    })
+                });
+                let toolbar_buttons = element.find(":button");
+                let editareaBox = $("#ct_editarea_box");
+                let previewBox = $("#ct_preview_box span");
+                // Set the event for click an button of the toolbar
+                toolbar_buttons.on("click", function () {
+                    let text = $(this).attr("data-insert");
+                    typeInTextarea(editareaBox, text);
+                    refreshTexPreview(previewBox, editareaBox.val());
+                });
             }
+            element.fadeIn();
         }
     });
 }
@@ -116,31 +130,25 @@ function editex() {
     let discipline_selector = $("#ct_discipline .btn-group");
     let discipline_selected = discipline_selector.find(".active");
     let toolbar = $("#ct_toolbar");
-    let toolbar_buttons = toolbar.find("button");
     let editareaBox = $("#ct_editarea_box");
     let previewBox = $("#ct_preview_box span");
     let insert = $("#ct_insert");
 
     discipline_selector.find(":button").text(discipline_selected.text());
+    toolbar.hide();
     createToolbar(discipline_selected.data("discipline"), toolbar);
 
     discipline_selector.find('a').on("click", function () {
-        if ($(this).attr("class").search("active") <= 0) {
-            discipline_selector.find(".active").removeClass("active");
+        if (!$(this).hasClass("active")) {
+            discipline_selected.removeClass("active");
             $(this).addClass("active");
+            discipline_selected = $(this);
             discipline_selector.find(":button").text($(this).text());
-            toolbar.fadeOut();
+            toolbar.hide();
             toolbar.empty();
             createToolbar(discipline_selected.data("discipline"), toolbar);
         }
         return false;
-    });
-
-    // Set the event for click an button of the toolbar
-    toolbar_buttons.on("click", function () {
-        let text = $(this).attr("data-insert");
-        typeInTextarea(editareaBox, text);
-        refreshTexPreview(previewBox, editareaBox.val());
     });
 
     // Set the events for editareabox
@@ -151,6 +159,7 @@ function editex() {
         refreshTexPreview(previewBox, editareaBox.val());
     });
 
+    // Set the event for insert the formula in editor
     insert.on("click", function () {
         insertEditex(editareaBox.val());
     });

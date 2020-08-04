@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <editex>
-    <toolbar name="math">
+    <discipline name="math">
         <group name="Delimiters" shortname="delim">
             <item insert="(">(</item>
             <item insert=")">)</item>
@@ -39,5 +39,86 @@
             <item insert="\Omega">\Omega</item>
             <item insert="\pi">\pi</item>
         </group>
-    </toolbar>
+    </discipline>
+    <discipline name="pre-algebra">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="trigonometry">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="pre-calculus">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="calculus">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="statistics">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="finite-math">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="linear-algebra">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="chemistry">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
+    <discipline name="physics">
+        <group name="Delimiters" shortname="delim">
+            <item insert="(">(</item>
+            <item insert=")">)</item>
+            <item insert="\mid">\mid</item>
+            <item insert="[">[</item>
+            <item insert="]">]</item>
+        </group>
+    </discipline>
 </editex>
