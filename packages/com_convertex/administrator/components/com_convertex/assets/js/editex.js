@@ -75,9 +75,11 @@ function typeInTextarea(element, newText) {
 
 // Function for create the toolbar
 function createToolbar(discipline, element) {
+    let url = (window.location.pathname.includes("administrator", 0)) ? "" : "administrator/";
+    url += "components/com_convertex/assets/latex/toolbar.xml";
     $.ajax({
         type: "GET",
-        url: "administrator/components/com_convertex/assets/latex/toolbar.xml",
+        url: url,
         dataType: "xml",
         success: function (xml) {
             let toolbar = "";
