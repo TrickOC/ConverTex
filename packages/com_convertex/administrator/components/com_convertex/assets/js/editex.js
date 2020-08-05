@@ -28,7 +28,9 @@ window.MathJax = {
             MathJax.startup.defaultReady();
             MathJax.startup.promise.then(() => {
                 console.log('MathJax initial typesetting complete');
-                editex();
+                $(function () {
+                    editex();
+                });
             });
         }
     }
@@ -82,6 +84,7 @@ function createToolbar(discipline, element) {
             $(xml).find("discipline").each(function () {
                 if ($(this).attr("name") === discipline) {
                     toolbar = $(this);
+                    return false;
                 }
             });
             if (toolbar === "") {
@@ -107,18 +110,15 @@ function createToolbar(discipline, element) {
                                 .attr("type", "button")
                                 .attr("data-insert", $(this).attr("insert"))
                                 .text('\\[' + $(this).text() + '\\]')
+                                .on("click", function () {
+                                    let editareaBox = $("#ct_editarea_box");
+                                    let text = $(this).data("insert");
+                                    typeInTextarea(editareaBox, text);
+                                    refreshTexPreview($("#ct_preview_box span"), editareaBox.val());
+                                })
                                 .appendTo("#ct_toolbar_group_" + $(this).parent().attr("shortname"));
                         });
                     })
-                });
-                let toolbar_buttons = element.find(":button");
-                let editareaBox = $("#ct_editarea_box");
-                let previewBox = $("#ct_preview_box span");
-                // Set the event for click an button of the toolbar
-                toolbar_buttons.on("click", function () {
-                    let text = $(this).attr("data-insert");
-                    typeInTextarea(editareaBox, text);
-                    refreshTexPreview(previewBox, editareaBox.val());
                 });
             }
             element.fadeIn();
