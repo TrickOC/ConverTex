@@ -28,11 +28,6 @@ JHtml::_('script', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js',
     <div id="ct_discipline" role="toolbar" class="btn-toolbar" aria-label="Toolbar" aria-labelledby="ct_course"
          tabindex="-1">
         <div class="btn-group" role="group" aria-label="Discipline selector">
-            <div class="input-group-prepend">
-                <span class="input-group-text ct_text_discipline">
-                    <?php echo JText::sprintf('COM_CONVERTEX_DISCIPLINE') ?>
-                </span>
-            </div>
             <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="selector" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false"></button>
             <div class="dropdown-menu" aria-labelledby="selector">
