@@ -82,6 +82,7 @@ function createToolbar(discipline, element) {
         url: url,
         dataType: "xml",
         success: function (xml) {
+            element.hide();
             let toolbar = "";
             $(xml).find("discipline").each(function () {
                 if ($(this).attr("name") === discipline) {
@@ -90,12 +91,14 @@ function createToolbar(discipline, element) {
                 }
             });
             if (toolbar === "") {
+                element.empty();
                 $("<p></p>")
                     .addClass("alert").addClass("alert-danger")
                     .attr("role", "alert")
                     .text("ERRO in build the toolbar for discipline " + discipline)
                     .appendTo(element);
             } else {
+                element.empty();
                 toolbar.find("group").each(function () {
                     $("<div></div>")
                         .addClass("btn-group")
@@ -137,7 +140,6 @@ function editex() {
     let insert = $("#ct_insert");
 
     discipline_selector.find(":button").text(discipline_selected.text());
-    toolbar.hide();
     createToolbar(discipline_selected.data("discipline"), toolbar);
 
     discipline_selector.find('a').on("click", function () {
@@ -146,8 +148,6 @@ function editex() {
             $(this).addClass("active");
             discipline_selected = $(this);
             discipline_selector.find(":button").text($(this).text());
-            toolbar.hide();
-            toolbar.empty();
             createToolbar(discipline_selected.data("discipline"), toolbar);
         }
         return false;
