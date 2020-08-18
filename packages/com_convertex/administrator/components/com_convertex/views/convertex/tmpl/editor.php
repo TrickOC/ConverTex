@@ -20,9 +20,6 @@ JHtml::_('script', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootst
 // Editor files
 JHtml::_('stylesheet', 'administrator/components/com_convertex/assets/css/editex.css');
 JHtml::_('script', 'administrator/components/com_convertex/assets/js/editex.js');
-
-// MathJax file
-JHtml::_('script', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js', array('id' => 'MathJax-script'), array('refer' => 'refer'));
 ?>
 <div id="ct_popup">
     <div id="ct_discipline" role="toolbar" class="btn-toolbar" aria-label="Toolbar" aria-labelledby="ct_course"
@@ -73,7 +70,7 @@ JHtml::_('script', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js',
 
     <div id="ct_editarea" role="textbox" class="input-group justify-content-center" tabindex="-1">
         <div class="input-group-prepend">
-            <span class="input-group-text latex">\[\LaTeX\]</span>
+            <span class="input-group-text latex">[tex]LaTeX[/tex]</span>
         </div>
         <textarea id="ct_editarea_box" class="form-control" name="LaTeX input" aria-label="LaTeX input"></textarea>
     </div>

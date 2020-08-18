@@ -15,7 +15,13 @@ window.MathJax = {
         load: ['input/tex-base', 'output/svg', '[tex]/noerrors', '[tex]/physics', '[tex]/colorV2']
     },
     tex: {
-        packages: {'[+]': ['noerrors', 'physics', 'colorV2']}
+        packages: {'[+]': ['noerrors', 'physics', 'colorV2']},
+        inlineMath: [              // start/end delimiter pairs for in-line math
+            ['[tex]', '[/tex]']
+        ],
+        displayMath: [             // start/end delimiter pairs for display math
+            ['[texD]', '[/texD]']
+        ]
     },
     svg: {
         matchFontHeight: true,
@@ -57,7 +63,7 @@ function insertEditex(insert) {
 // Function for refresh content in the element
 function refreshTexPreview(element, val) {
     typeset(() => {
-        element.text('\\[' + val + '\\]');
+        element.text('[texD]' + val + '[/texD]');
     });
 }
 
@@ -114,7 +120,7 @@ function createToolbar(discipline, element) {
                                 .addClass("btn-primary")
                                 .attr("type", "button")
                                 .attr("data-insert", $(this).attr("insert"))
-                                .text('\\[' + $(this).text() + '\\]')
+                                .text('[tex]' + $(this).text() + '[/tex]')
                                 .on("click", function () {
                                     let editareaBox = $("#ct_editarea_box");
                                     let text = $(this).data("insert");

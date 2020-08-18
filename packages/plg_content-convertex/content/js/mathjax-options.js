@@ -32,7 +32,13 @@ window.MathJax = {
         load: ['input/tex-base', 'output/svg', '[tex]/noerrors', '[tex]/physics', '[tex]/colorV2']
     },
     tex: {
-        packages: {'[+]': ['noerrors', 'physics', 'colorV2']}
+        packages: {'[+]': ['noerrors', 'physics', 'colorV2']},
+        inlineMath: [              // start/end delimiter pairs for in-line math
+            ['[tex]', '[/tex]']
+        ],
+        displayMath: [             // start/end delimiter pairs for display math
+            ['[texD]', '[/texD]']
+        ]
     },
     svg: {
         matchFontHeight: true,

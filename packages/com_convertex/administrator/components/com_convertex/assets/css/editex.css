@@ -11,15 +11,6 @@
     padding: .6rem .75rem;
 }
 
-#ct_toolbar mjx-container {
-    display: inline !important;
-    margin: 0 !important;
-}
-
-.latex mjx-container {
-    display: inline !important;
-}
-
 #ct_discipline {
     justify-content: flex-end;
 }

@@ -56,30 +56,20 @@ class plgContentConverTex extends CMSPlugin
 	}
 
 	// Function for prepare content for the chosen plugin
-	static function converTex($tex)
+	static function mimetex($tex)
 	{
 		$app       = JFactory::getApplication();
 		$plgParams = new JRegistry($app);
 		$mimetex   = $plgParams->get('mimetex');
-		$opt       = $plgParams->get('optrender');
 
 		// Format the data for display
 		$content_urlencoded = rawurlencode(html_entity_decode($tex[1]));
-		$html               = '';
-		// Check the chosen option and if mimetex url is set
-		if ($opt == 'mathjax' || !isset($mimetex))
-			$html .= "<span class=\"latex\">\[$tex[1]\]</span>";
-		else
-			$html .= "<img src=\"$mimetex?formdata=$content_urlencoded\" alt=\"{$tex[1]}\" title=\"{$tex[1]}\"/>";
 
-		return $html;
+		return "<img src=\"$mimetex?formdata=$content_urlencoded\" alt=\"{$tex[1]}\" title=\"{$tex[1]}\"/>";
 	}
 
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{
-		// Find the Tex tag and prepare content in conveTex function
-		$article->text = preg_replace_callback("/\[tex\]((?:.|\n)*)\[\/tex\]/U", array('plgContentConverTex', 'converTex'), $article->text);
-
 		// Verify the option selected for otimize the load of document
 		if ($this->get('optrender') == 'mathjax' || $this->get('mimetex') == '')
 		{
@@ -88,9 +78,12 @@ class plgContentConverTex extends CMSPlugin
 			// Add the script config for Mathjax
 			JHtml::_('script', 'plugins/content/convertex/js/mathjax-options.js', array('id' => 'Mathjax-options'), array('refer' => 'refer'));
 			JHtml::_('script', $mathjax, array('id' => 'MathJax-script'), array('refer' => 'refer'));
-			JHtml::_('stylesheet', 'plugins/content/convertex/css/tex.css');
 		}
-
+		else
+		{
+			// Find the Tex tag and prepare content in conveTex function
+			$article->text = preg_replace_callback("/\[tex]((?:.|\n)*)\[\/tex]/U", array('plgContentConverTex', 'mimetex'), $article->text);
+		}
 		return true;
 	}
 
