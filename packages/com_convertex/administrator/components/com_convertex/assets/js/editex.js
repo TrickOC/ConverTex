@@ -43,7 +43,7 @@ window.MathJax = {
 };
 
 (function () {
-    var script = document.createElement('script');
+    let script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js';
     script.async = true;
     document.head.appendChild(script);
@@ -62,7 +62,12 @@ function typeset(code) {
 // Function for insert the final equation in the text of the editor
 function insertEditex(insert) {
     const editor = $('#editor_name').val();
-    window.parent.jInsertEditorText('[tex]' + insert + '[/tex]', editor);
+    /** Use the API, if editor supports it **/
+    if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
+        window.Joomla.editors.instances[editor].replaceSelection('[tex]' + insert + '[/tex]');
+    } else {
+        window.jInsertEditorText('[tex]' + insert + '[/tex]', editor);
+    }
     window.parent.SqueezeBox.close();
     return false;
 }
@@ -70,7 +75,7 @@ function insertEditex(insert) {
 // Function for refresh content in the element
 function refreshTexPreview(element, val) {
     typeset(() => {
-        element.text('[texD]' + val + '[/texD]');
+        element.text('[tex]' + val + '[/tex]');
     });
 }
 
