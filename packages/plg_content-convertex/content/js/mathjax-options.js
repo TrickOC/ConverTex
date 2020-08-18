@@ -4,7 +4,7 @@ window.MathJax = {
         ignoreHtmlClass: 'tex2jax_ignore',
         processHtmlClass: 'tex2jax_process',
         skipHtmlTags: [
-            'script', 'noscript', 'style', 'textarea', 'pre',
+            'script', 'noscript', 'style', 'pre',
             'code', 'annotation', 'annotation-xml'
         ],
         menuOptions: {

@@ -78,7 +78,7 @@ class plgContentConverTex extends CMSPlugin
 	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{
 		// Find the Tex tag and prepare content in conveTex function
-		$article->text = preg_replace_callback("/\{tex\}((?:.|\n)*)\{\/tex\}/U", array('plgContentConverTex', 'converTex'), $article->text);
+		$article->text = preg_replace_callback("/\[tex\]((?:.|\n)*)\[\/tex\]/U", array('plgContentConverTex', 'converTex'), $article->text);
 
 		// Verify the option selected for otimize the load of document
 		if ($this->get('optrender') == 'mathjax' || $this->get('mimetex') == '')

@@ -4,7 +4,7 @@ window.MathJax = {
         ignoreHtmlClass: 'tex2jax_ignore',
         processHtmlClass: 'tex2jax_process',
         skipHtmlTags: [
-            'script', 'noscript', 'style', 'textarea', 'pre',
+            'script', 'noscript', 'style', 'pre',
             'code', 'annotation', 'annotation-xml'
         ],
         renderActions: {
@@ -49,7 +49,7 @@ function typeset(code) {
 // Function for insert the final equation in the text of the editor
 function insertEditex(insert) {
     const editor = $('#editor_name').val();
-    window.parent.jInsertEditorText(`{tex}${insert}{/tex}`, editor);
+    window.parent.jInsertEditorText('[tex]' + insert + '[/tex]', editor);
     window.parent.SqueezeBox.close();
     return false;
 }

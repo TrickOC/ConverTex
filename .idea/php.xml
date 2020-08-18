@@ -2,7 +2,8 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$USER_HOME$/Documents/Projetos/Joomla_3.9.19-Stable-Full_Package" />
+      <path value="$USER_HOME$/Documents/Triki/Joomla_3.9.19-Stable-Full_Package" />
     </include_path>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
 </project>
