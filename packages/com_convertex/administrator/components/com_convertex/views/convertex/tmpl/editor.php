@@ -19,7 +19,7 @@ JHtml::_('script', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootst
 
 // Editor files
 JHtml::_('stylesheet', 'administrator/components/com_convertex/assets/css/editex.css');
-JHtml::_('script', 'administrator/components/com_convertex/assets/js/editex.js');
+JHtml::_('script', 'administrator/components/com_convertex/assets/js/editex.js', array('async' => 'async'));
 ?>
 <div id="ct_popup">
     <div id="ct_discipline" role="toolbar" class="btn-toolbar" aria-label="Toolbar" aria-labelledby="ct_course"

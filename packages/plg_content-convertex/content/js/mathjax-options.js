@@ -55,22 +55,3 @@ window.MathJax = {
         }
     }
 };
-
-// Dummy function for call another function before the page is completely loaded
-function ready(fn) {
-    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-        fn();
-    } else {
-        document.addEventListener('DOMContentLoaded', fn);
-    }
-}
-
-// Function for reset display in the all latex class
-function convertex() {
-    let elements = document.querySelectorAll('.latex');
-    Array.prototype.forEach.call(elements, function (item, index) {
-        item.style.display = '';
-    });
-}
-
-ready(convertex);

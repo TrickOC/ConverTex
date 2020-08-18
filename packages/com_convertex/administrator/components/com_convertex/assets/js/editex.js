@@ -42,6 +42,13 @@ window.MathJax = {
     }
 };
 
+(function () {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js';
+    script.async = true;
+    document.head.appendChild(script);
+})();
+
 function typeset(code) {
     MathJax.startup.promise = MathJax.startup.promise
         .then(() => {
