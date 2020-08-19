@@ -55,3 +55,20 @@ window.MathJax = {
         }
     }
 };
+
+(function () {
+    let script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js';
+    script.async = true;
+    document.head.appendChild(script);
+})();
+
+function refreshMathJax(code) {
+    MathJax.startup.promise = MathJax.startup.promise
+        .then(() => {
+            code();
+            return MathJax.typesetPromise();
+        })
+        .catch((err) => console.log('Typeset failed: ' + err.message));
+    return MathJax.startup.promise;
+}

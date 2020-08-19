@@ -25,7 +25,8 @@ JHtml::_('script', 'administrator/components/com_convertex/assets/js/editex.js',
     <div id="ct_discipline" role="toolbar" class="btn-toolbar" aria-label="Toolbar" aria-labelledby="ct_course"
          tabindex="-1">
         <div class="btn-group" role="group" aria-label="Discipline selector">
-            <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="selector" data-toggle="dropdown"
+            <button class="btn btn-danger btn-lg dropdown-toggle ct_btn_discipline" type="button" id="selector"
+                    data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false"></button>
             <div class="dropdown-menu" aria-labelledby="selector">
                 <a class="dropdown-item active" href="#" data-discipline="math">
@@ -61,8 +62,6 @@ JHtml::_('script', 'administrator/components/com_convertex/assets/js/editex.js',
             </div>
         </div>
     </div>
-
-    <hr class="clearfix">
 
     <div id="ct_toolbar" role="toolbar" class="btn-toolbar" aria-label="Toolbar" aria-labelledby="ct_toolbar"
          tabindex="-1">

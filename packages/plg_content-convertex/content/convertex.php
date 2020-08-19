@@ -68,23 +68,25 @@ class plgContentConverTex extends CMSPlugin
 		return "<img src=\"$mimetex?formdata=$content_urlencoded\" alt=\"{$tex[1]}\" title=\"{$tex[1]}\"/>";
 	}
 
-	public function onContentPrepare($context, &$article, &$params, $page = 0)
+	public function onContentPrepare($context, &$article, $params, $page = 0)
 	{
 		// Verify the option selected for otimize the load of document
 		if ($this->get('optrender') == 'mathjax' || $this->get('mimetex') == '')
 		{
-			// URL for the Mathjax API
-			$mathjax = $this->params->get('mathjax', 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js');
 			// Add the script config for Mathjax
 			JHtml::_('script', 'plugins/content/convertex/js/mathjax-options.js', array('id' => 'Mathjax-options'), array('refer' => 'refer'));
-			JHtml::_('script', $mathjax, array('id' => 'MathJax-script'), array('refer' => 'refer'));
 		}
 		else
 		{
 			// Find the Tex tag and prepare content in conveTex function
 			$article->text = preg_replace_callback("/\[tex]((?:.|\n)*)\[\/tex]/U", array('plgContentConverTex', 'mimetex'), $article->text);
 		}
+
 		return true;
 	}
 
+	public function onContentBeforeSave($context, &$article, $isnew)
+	{
+		return true;
+	}
 }

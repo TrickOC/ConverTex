@@ -62,20 +62,23 @@ function typeset(code) {
 // Function for insert the final equation in the text of the editor
 function insertEditex(insert) {
     const editor = $('#editor_name').val();
+    insert = '[tex]' + insert + '[/tex]';
     /** Use the API, if editor supports it **/
     if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
-        window.Joomla.editors.instances[editor].replaceSelection('[tex]' + insert + '[/tex]');
+        window.Joomla.editors.instances[editor].replaceSelection(insert);
     } else {
-        window.jInsertEditorText('[tex]' + insert + '[/tex]', editor);
+        window.parent.jInsertEditorText(insert, editor);
     }
     window.parent.SqueezeBox.close();
+    window.parent.refreshMathJax(() => {
+    });
     return false;
 }
 
 // Function for refresh content in the element
 function refreshTexPreview(element, val) {
     typeset(() => {
-        element.text('[tex]' + val + '[/tex]');
+        element.text('[texD]' + val + '[/texD]');
     });
 }
 
