@@ -68,6 +68,47 @@ class plgContentConverTex extends CMSPlugin
 		return "<img src=\"$mimetex?formdata=$content_urlencoded\" alt=\"{$tex[1]}\" title=\"{$tex[1]}\"/>";
 	}
 
+	static function convertSave($tag)
+	{
+		if (stripos($tag[1], 'teximg') !== false)
+		{
+			return "[tex]$tag[2][/tex]";
+		}
+
+		return $tag;
+	}
+
+	protected function updateArticle(&$article)
+	{
+		$db = JFactory::getDbo();
+
+		// Create a new query object.
+		$query = $db->getQuery(true);
+
+		$conditions = array(
+			'id=' . $article->id,
+		);
+
+		// Fields to update.
+		$fields = array(
+			'introtext=' . $db->quote($article->introtext)
+		);
+
+		// update query
+		$query->update($db->quoteName('#__content'))->set($fields)->where($conditions);
+
+		// set the query
+		$db->setQuery($query);
+
+		// execute, throw an exception if we have a problem
+		if (!$db->execute())
+		{
+			return false;
+		}
+
+		return true;
+	}
+
 	public function onContentPrepare($context, &$article, $params, $page = 0)
 	{
 		// Verify the option selected for otimize the load of document
@@ -85,8 +126,21 @@ class plgContentConverTex extends CMSPlugin
 		return true;
 	}
 
-	public function onContentBeforeSave($context, &$article, $isnew)
+	public function onContentAfterSave($context, $article, $isnew)
 	{
-		return true;
+		if (stripos($article->introtext, 'teximg') === false) return;
+
+		// For avoid getting any content being saved
+		if ($context === 'com_content.article')
+		{
+			// Replace all images back to latex language
+			$article->introtext = preg_replace_callback(
+				'/<img class="((?:.|\n)*)" title="((?:.|\n)*)"((?:.|\n)*)>/U',
+				array('plgContentConverTex', 'convertSave'),
+				$article->introtext
+			);
+			// Update the article
+			$this->updateArticle($article);
+		}
 	}
 }

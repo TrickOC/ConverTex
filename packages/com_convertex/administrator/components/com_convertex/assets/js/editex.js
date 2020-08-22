@@ -62,7 +62,9 @@ function typeset(code) {
 // Function for insert the final equation in the text of the editor
 function insertEditex(insert) {
     const editor = $('#editor_name').val();
-    insert = '[tex]' + insert + '[/tex]';
+    let encoded = encodeURIComponent(insert);
+    insert = '<img src="http://neurostatistician.eu/cgi-bin/mimetex.cgi?formdata=' + encoded + '" alt="' + insert + '" title="' + insert + '" class="teximg"/>';
+    //insert = '[tex]' + insert + '[/tex]';
     /** Use the API, if editor supports it **/
     if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
         window.Joomla.editors.instances[editor].replaceSelection(insert);
@@ -70,8 +72,7 @@ function insertEditex(insert) {
         window.parent.jInsertEditorText(insert, editor);
     }
     window.parent.SqueezeBox.close();
-    window.parent.refreshMathJax(() => {
-    });
+    //window.parent.refreshMathJax(() => {});
     return false;
 }
 
