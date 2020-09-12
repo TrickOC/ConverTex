@@ -1,3 +1,6 @@
+// Variable to confirm the MathJax is loaded
+let mathIsLoad = false;
+
 // Config of the MathJax
 window.MathJax = {
     options: {
@@ -51,6 +54,7 @@ window.MathJax = {
             MathJax.startup.defaultReady();
             MathJax.startup.promise.then(() => {
                 console.log('MathJax initial typesetting complete');
+                mathIsLoad = true;
             });
         }
     }

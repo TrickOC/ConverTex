@@ -49,6 +49,11 @@
                         label="PLG_CONVERTEX_MIMETEX_URL"
                         description="PLG_CONVERTEX_MIMETEX_URL_DESC"
                 />
+                <field name="debug" type="radio" default="false" label="PLG_CONVERTEX_DEBUG"
+                       description="PLG_CONVERTEX_DEBUG_DESC" class="radio btn-group">
+                    <option value="false">PLG_CONVERTEX_DEBUG_FALSE</option>
+                    <option value="true">PLG_CONVERTEX_DEBUG_TRUE</option>
+                </field>
             </fieldset>
         </fields>
     </config>
