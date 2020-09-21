@@ -65,20 +65,25 @@ function insertEditex(insert) {
 
     if (window.parent.mathIsLoad) {
         insert = '[tex]' + insert + '[/tex]';
+        window.parent.refreshMathJax(() => {
+            /** Use the API, if editor supports it **/
+            if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
+                window.Joomla.editors.instances[editor].replaceSelection(insert);
+            } else {
+                window.parent.jInsertEditorText(insert, editor);
+            }
+        });
     } else {
         insert = '<img src="http://neurostatistician.eu/cgi-bin/mimetex.cgi?formdata=' + encodeURIComponent(insert) + '" alt="' + insert + '" title="' + insert + '" class="teximg"/>';
+        /** Use the API, if editor supports it **/
+        if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
+            window.Joomla.editors.instances[editor].replaceSelection(insert);
+        } else {
+            window.parent.jInsertEditorText(insert, editor);
+        }
     }
-    /** Use the API, if editor supports it **/
-    if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
-        window.Joomla.editors.instances[editor].replaceSelection(insert);
-    } else {
-        window.parent.jInsertEditorText(insert, editor);
-    }
+
     window.parent.SqueezeBox.close();
-    if (window.parent.mathIsLoad) {
-        window.parent.refreshMathJax(() => {
-        });
-    }
     return false;
 }
 
