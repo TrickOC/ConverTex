@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <extension type="plugin" version="3.8" group="editors-xtd" method="upgrade">
     <name>PLG_EDITEX_REFRESH_EDITORSXTD</name>
-    <creationDate>29 April 2020</creationDate>
+    <creationDate>05 October 2020</creationDate>
     <author>Patrick Oliveira do Carmo</author>
     <authorEmail>patrick.carmo@aluno.ufop.edu.br</authorEmail>
     <authorUrl>https://triki.ufop.br/</authorUrl>

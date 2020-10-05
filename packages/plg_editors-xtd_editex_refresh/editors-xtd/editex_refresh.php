@@ -10,48 +10,30 @@
 
 defined('_JEXEC') or die;
 
+/**
+ * Editor Editex_Refresh button
+ *
+ * @since  1.0
+ */
 class PlgButtonEdiTexRefresh extends JPlugin
 {
+	/**
+	 * Load the language file on instantiation.
+	 *
+	 * @var    boolean
+	 * @since  3.1
+	 */
 	protected $autoloadLanguage = true;
 
-	public function __construct(&$subject, $config = array())
-	{
-		// Get the parameters.
-		if (isset($config['params']))
-		{
-			if ($config['params'] instanceof JRegistry)
-			{
-				$this->params = $config['params'];
-			}
-			else
-			{
-				$this->params = new JRegistry;
-				$this->params->loadString($config['params']);
-			}
-		}
-
-		// Get the plugin name.
-		if (isset($config['name']))
-		{
-			$this->_name = $config['name'];
-		}
-
-		// Get the plugin type.
-		if (isset($config['type']))
-		{
-			$this->_type = $config['type'];
-		}
-
-		// Load the language files if needed. Note whilst this method is in the
-		// JPlugin class it has been left out of the docs for code clarity.
-		if ($this->autoloadLanguage)
-		{
-			$this->loadLanguage();
-		}
-
-		parent::__construct($subject, $config);
-	}
-
+	/**
+	 * Editex_Refresh button
+	 *
+	 * @param   string  $name  The name of the button to add
+	 *
+	 * @return  JObject  The button options as JObject
+	 *
+	 * @since   1.0
+	 */
 	public function onDisplay($name)
 	{
 		// Pass some data to javascript
@@ -61,13 +43,14 @@ class PlgButtonEdiTexRefresh extends JPlugin
 				'editor' => $this->_subject->getContent($name),
 			)
 		);
+
 		// Creation of a JObject of a button to insert in the chosen editor
 		$button          = new JObject;
 		$button->modal   = false;
 		$button->class   = 'btn';
 		$button->onclick = 'refreshMathJax(\'' . $name . '\');return false;';
-		$button->text    = 'Refresh';
-		$button->name    = 'reload';
+		$button->text    = 'Refresh MathJax';
+		$button->name    = 'refresh';
 		$button->link    = '#';
 
 		return $button;

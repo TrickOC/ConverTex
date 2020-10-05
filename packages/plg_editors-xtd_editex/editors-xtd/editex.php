@@ -10,48 +10,30 @@
 
 defined('_JEXEC') or die;
 
+/**
+ * Editor Editex button
+ *
+ * @since  1.0
+ */
 class PlgButtonEdiTex extends JPlugin
 {
+	/**
+	 * Load the language file on instantiation.
+	 *
+	 * @var    boolean
+	 * @since  3.1
+	 */
 	protected $autoloadLanguage = true;
 
-	public function __construct(&$subject, $config = array())
-	{
-		// Get the parameters.
-		if (isset($config['params']))
-		{
-			if ($config['params'] instanceof JRegistry)
-			{
-				$this->params = $config['params'];
-			}
-			else
-			{
-				$this->params = new JRegistry;
-				$this->params->loadString($config['params']);
-			}
-		}
-
-		// Get the plugin name.
-		if (isset($config['name']))
-		{
-			$this->_name = $config['name'];
-		}
-
-		// Get the plugin type.
-		if (isset($config['type']))
-		{
-			$this->_type = $config['type'];
-		}
-
-		// Load the language files if needed. Note whilst this method is in the
-		// JPlugin class it has been left out of the docs for code clarity.
-		if ($this->autoloadLanguage)
-		{
-			$this->loadLanguage();
-		}
-
-		parent::__construct($subject, $config);
-	}
-
+	/**
+	 * Editex button
+	 *
+	 * @param   string  $name  The name of the button to add
+	 *
+	 * @return  JObject  The button options as JObject
+	 *
+	 * @since   1.0
+	 */
 	public function onDisplay($name)
 	{
 		// Address for editor page in Joomla
