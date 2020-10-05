@@ -1,7 +1,7 @@
 <?php
 /**
  * @package    ConverTex
- * @subpackage Editors-xtd.EdiTex_Refresh
+ * @subpackage Editors-xtd.EdiTex_Mathjax
  * @author     Patrick Oliveira do Carmo <patrick.carmo@aluno.ufop.edu.br>
  * @copyright  Copyright (C) - 2020 - Patrick Oliveira do Carmo
  * @license    GNU General Public License version 2 or later; see LICENSE.txt.txt
@@ -11,11 +11,11 @@
 defined('_JEXEC') or die;
 
 /**
- * Editor Editex_Refresh button
+ * Editor Editex_Mathjax button
  *
  * @since  1.0
  */
-class PlgButtonEdiTexRefresh extends JPlugin
+class PlgButtonEdiTexMathjax extends JPlugin
 {
 	/**
 	 * Load the language file on instantiation.
@@ -26,7 +26,7 @@ class PlgButtonEdiTexRefresh extends JPlugin
 	protected $autoloadLanguage = true;
 
 	/**
-	 * Editex_Refresh button
+	 * Editex_Mathjax button
 	 *
 	 * @param   string  $name  The name of the button to add
 	 *
@@ -38,7 +38,7 @@ class PlgButtonEdiTexRefresh extends JPlugin
 	{
 		// Pass some data to javascript
 		JFactory::getDocument()->addScriptOptions(
-			'editex-refresh',
+			'editex-mathjax',
 			array(
 				'editor' => $this->_subject->getContent($name),
 			)
@@ -49,7 +49,7 @@ class PlgButtonEdiTexRefresh extends JPlugin
 		$button->modal   = false;
 		$button->class   = 'btn';
 		$button->onclick = 'refreshMathJax(\'' . $name . '\');return false;';
-		$button->text    = 'Refresh MathJax';
+		$button->text    = 'MathJax';
 		$button->name    = 'refresh';
 		$button->link    = '#';
 

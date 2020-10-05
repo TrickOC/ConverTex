@@ -68,7 +68,7 @@ window.MathJax = {
 })();
 
 window.refreshMathJax = function (editor) {
-    let content, options = window.Joomla.getOptions("editex-refresh");
+    let content, options = window.Joomla.getOptions("editex-mathjax");
 
     if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
         content = window.Joomla.editors.instances[editor].getValue();

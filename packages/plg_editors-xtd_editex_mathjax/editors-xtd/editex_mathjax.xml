@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <extension type="plugin" version="3.8" group="editors-xtd" method="upgrade">
-    <name>PLG_EDITEX_REFRESH_EDITORSXTD</name>
+    <name>PLG_EDITEX_MATHJAX_EDITORSXTD</name>
     <creationDate>05 October 2020</creationDate>
     <author>Patrick Oliveira do Carmo</author>
     <authorEmail>patrick.carmo@aluno.ufop.edu.br</authorEmail>
@@ -8,18 +8,18 @@
     <copyright>Copyright (C) - 2020 - Patrick Oliveira do Carmo.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <version>1.0</version>
-    <description>PLG_EDITEX_REFRESH_EDITORSXTD_XML_DESCRIPTION</description>
+    <description>PLG_EDITEX_MATHJAX_EDITORSXTD_XML_DESCRIPTION</description>
     <!-- Plugin files -->
     <files>
-        <filename plugin="editex_refresh">editex_refresh.php</filename>
+        <filename plugin="editex_mathjax">editex_mathjax.php</filename>
         <filename>LICENSE.txt</filename>
         <folder>language</folder>
     </files>
     <!-- Language files -->
     <languages folder="language">
-        <language tag="en-GB">en-GB/en-GB.plg_editors-xtd_editex_refresh.ini</language>
-        <language tag="en-GB">en-GB/en-GB.plg_editors-xtd_editex_refresh.sys.ini</language>
-        <language tag="pt-BR">pt-BR/pt-BR.plg_editors-xtd_editex_refresh.ini</language>
-        <language tag="pt-BR">pt-BR/pt-BR.plg_editors-xtd_editex_refresh.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_editors-xtd_editex_mathjax.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_editors-xtd_editex_mathjax.sys.ini</language>
+        <language tag="pt-BR">pt-BR/pt-BR.plg_editors-xtd_editex_mathjax.ini</language>
+        <language tag="pt-BR">pt-BR/pt-BR.plg_editors-xtd_editex_mathjax.sys.ini</language>
     </languages>
 </extension>
