@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <extension type="plugin" version="3.8" group="content" method="upgrade">
     <name>PLG_CONVERTEX</name>
     <creationDate>27 March 2020</creationDate>

@@ -62,28 +62,13 @@ function typeset(code) {
 // Function for insert the final equation in the text of the editor
 function insertEditex(insert) {
     const editor = $('#editor_name').val();
-
-    if (window.parent.mathIsLoad) {
-        insert = '[tex]' + insert + '[/tex]';
-        window.parent.refreshMathJax(() => {
-            /** Use the API, if editor supports it **/
-            if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
-                window.Joomla.editors.instances[editor].replaceSelection(insert);
-            } else {
-                window.parent.jInsertEditorText(insert, editor);
-            }
-        });
+    insert = '[tex]' + insert + '[/tex]';
+    /** Use the API, if editor supports it **/
+    if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
+        window.Joomla.editors.instances[editor].replaceSelection(insert);
     } else {
-        insert = '<img src="http://neurostatistician.eu/cgi-bin/mimetex.cgi?formdata=' + encodeURIComponent(insert) + '" alt="' + insert + '" title="' + insert + '" class="teximg"/>';
-        /** Use the API, if editor supports it **/
-        if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
-            window.Joomla.editors.instances[editor].replaceSelection(insert);
-        } else {
-            window.parent.jInsertEditorText(insert, editor);
-        }
+        window.parent.jInsertEditorText(insert, editor);
     }
-
-    window.parent.SqueezeBox.close();
     return false;
 }
 

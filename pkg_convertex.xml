@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<extension type="package" version="3.7" method="upgrade">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="package" version="3.8" method="upgrade">
     <packagename>ConverTex</packagename>
     <creationDate>12 May 2020</creationDate>
     <author>Patrick Oliveira do Carmo</author>
@@ -20,6 +20,7 @@
         <file type="component" id="com_convertex">com_convertex.zip</file>
         <file type="plugin" id="convertex" group="content">plg_content-convertex.zip</file>
         <file type="plugin" id="editex" group="editors-xtd">plg_editors-xtd_editex.zip</file>
+        <file type="plugin" id="editex_refresh" group="editors-xtd">plg_ediotors-xtd_editex_refresh</file>
     </files>
 
 </extension>

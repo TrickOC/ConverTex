@@ -67,12 +67,14 @@ window.MathJax = {
     document.head.appendChild(script);
 })();
 
-function refreshMathJax(code) {
-    MathJax.startup.promise = MathJax.startup.promise
-        .then(() => {
-            code();
-            return MathJax.typesetPromise();
-        })
-        .catch((err) => console.log('Typeset failed: ' + err.message));
-    return MathJax.startup.promise;
+function refreshMathJax(editor) {
+    let content = window.Joomla.editors.instances[editor].getValue();
+    if (content.match(/\[tex\]/g)) {
+        MathJax.startup.promise = MathJax.startup.promise
+            .then(() => {
+                return MathJax.typesetPromise();
+            })
+            .catch((err) => console.log('Typeset failed: ' + err.message));
+        return MathJax.startup.promise;
+    }
 }
