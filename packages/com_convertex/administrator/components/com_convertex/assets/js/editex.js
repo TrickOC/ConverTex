@@ -69,6 +69,7 @@ function insertEditex(insert) {
     } else {
         window.parent.jInsertEditorText(insert, editor);
     }
+    window.parent.jModalClose();
     return false;
 }
 
