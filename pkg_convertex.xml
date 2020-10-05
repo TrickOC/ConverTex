@@ -20,7 +20,6 @@
         <file type="component" id="com_convertex">com_convertex.zip</file>
         <file type="plugin" id="convertex" group="content">plg_content-convertex.zip</file>
         <file type="plugin" id="editex" group="editors-xtd">plg_editors-xtd_editex.zip</file>
-        <file type="plugin" id="editex_mathjax" group="editors-xtd">plg_editors-xtd_editex_mathjax.zip</file>
     </files>
 
 </extension>
