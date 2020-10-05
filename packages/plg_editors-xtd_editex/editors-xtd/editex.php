@@ -40,13 +40,13 @@ class PlgButtonEdiTex extends JPlugin
 		$link = 'index.php?option=com_convertex&view=convertex&layout=editor&tmpl=convertex&editor=' . $name;
 
 		// Creation of a JObject of a button to insert in the chosen editor
-		$button          = new JObject;
-		$button->modal   = true;
-		$button->class   = 'btn';
-		$button->link    = $link;
-		$button->text    = 'ConverTex';
-		$button->name    = 'edit';
-		$button->options = "{handler: 'iframe', size: {x: 950, y: 500}}";
+		$button = new JObject;
+		$button->set('modal', true);
+		$button->set('class', 'btn');
+		$button->set('link', $link);
+		$button->set('text', 'ConverTex');
+		$button->set('name', 'edit');
+		$button->set('options', '{handler: \'iframe\', size: {x: 950, y: 500}}');
 
 		return $button;
 	}

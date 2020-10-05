@@ -45,13 +45,13 @@ class PlgButtonEdiTexMathjax extends JPlugin
 		);
 
 		// Creation of a JObject of a button to insert in the chosen editor
-		$button          = new JObject;
-		$button->modal   = false;
-		$button->class   = 'btn';
-		$button->onclick = 'refreshMathJax(\'' . $name . '\');return false;';
-		$button->text    = 'MathJax';
-		$button->name    = 'refresh';
-		$button->link    = '#';
+		$button = new JObject();
+		$button->set('modal', false);
+		$button->set('class', 'btn');
+		$button->set('onclick', 'refreshMathJax(\'' . $name . '\');return false;');
+		$button->set('text', 'MathJax');
+		$button->set('name', 'refresh');
+		$button->set('link', '#');
 
 		return $button;
 	}
