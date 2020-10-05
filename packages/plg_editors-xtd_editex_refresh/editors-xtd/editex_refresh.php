@@ -1,7 +1,7 @@
 <?php
 /**
  * @package    ConverTex
- * @subpackage Editors-xtd.EdiTex
+ * @subpackage Editors-xtd.EdiTex_Refresh
  * @author     Patrick Oliveira do Carmo <patrick.carmo@aluno.ufop.edu.br>
  * @copyright  Copyright (C) - 2020 - Patrick Oliveira do Carmo
  * @license    GNU General Public License version 2 or later; see LICENSE.txt.txt
@@ -54,14 +54,21 @@ class PlgButtonEdiTexRefresh extends JPlugin
 
 	public function onDisplay($name)
 	{
+		// Pass some data to javascript
+		JFactory::getDocument()->addScriptOptions(
+			'editex-refresh',
+			array(
+				'editor' => $this->_subject->getContent($name),
+			)
+		);
 		// Creation of a JObject of a button to insert in the chosen editor
 		$button          = new JObject;
 		$button->modal   = false;
 		$button->class   = 'btn';
-		$button->onclick = 'refreshMathJax(' . $this->_subject->getContent($name) . ');return false;';
-		$button->link    = '#';
+		$button->onclick = 'refreshMathJax(\'' . $name . '\');return false;';
 		$button->text    = 'Refresh';
 		$button->name    = 'reload';
+		$button->link    = '#';
 
 		return $button;
 	}

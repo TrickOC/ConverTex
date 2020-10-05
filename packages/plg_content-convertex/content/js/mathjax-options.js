@@ -67,8 +67,15 @@ window.MathJax = {
     document.head.appendChild(script);
 })();
 
-function refreshMathJax(editor) {
-    let content = window.Joomla.editors.instances[editor].getValue();
+window.refreshMathJax = function (editor) {
+    let content, options = window.Joomla.getOptions("editex-refresh");
+
+    if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
+        content = window.Joomla.editors.instances[editor].getValue();
+    } else {
+        content = (new Function('return ' + options.editor))();
+    }
+
     if (content.match(/\[tex\]/g)) {
         MathJax.startup.promise = MathJax.startup.promise
             .then(() => {
