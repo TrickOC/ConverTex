@@ -119,7 +119,7 @@ class plgContentConverTex extends CMSPlugin
 		return true;
 	}
 
-	public function onContentPrepare($context, &$article, $params, $page = 0)
+	public function onContentPrepare($context, &$article, &$params, $page = 0)
 	{
 		// Verify the option selected for otimize the load of document
 		if ($this->get('optrender') == 'mathjax' || $this->get('mimetex') == '')
@@ -141,6 +141,7 @@ class plgContentConverTex extends CMSPlugin
 				$article->text
 			);
 		}
+
 		return true;
 	}
 
