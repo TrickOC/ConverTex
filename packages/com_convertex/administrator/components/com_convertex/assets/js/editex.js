@@ -62,13 +62,26 @@ function typeset(code) {
 // Function for insert the final equation in the text of the editor
 function insertEditex(insert) {
     const editor = $('#editor_name').val();
-    insert = '[tex]' + insert + '[/tex]';
-    /** Use the API, if editor supports it **/
-    if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
-        window.Joomla.editors.instances[editor].replaceSelection(insert);
-    } else {
-        window.parent.jInsertEditorText(insert, editor);
-    }
+    let output = window.parent.tinymce.activeEditor.getBody();
+
+    window.parent.MathJax.texReset();
+    let options = window.parent.MathJax.getMetricsFor(output);
+    options.display = display.checked;
+
+    window.parent.MathJax.tex2svgPromise(insert, options).then(function (node) {
+        /** Use the API, if editor supports it **/
+        if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
+            window.Joomla.editors.instances[editor].replaceSelection(node);
+        } else {
+            window.parent.jInsertEditorText(node, editor);
+        }
+        window.parent.MathJax.startup.document.clear();
+        window.parent.MathJax.startup.document.updateDocument();
+    }).catch(function (err) {
+        console.error(err.message);
+    });
+
+    // Close the window of editor;
     window.parent.jModalClose();
     return false;
 }
@@ -76,7 +89,7 @@ function insertEditex(insert) {
 // Function for refresh content in the element
 function refreshTexPreview(element, val) {
     typeset(() => {
-        element.text('[texD]' + val + '[/texD]');
+        element.text('[texD]' + val.trim() + '[/texD]');
     });
 }
 
@@ -182,6 +195,6 @@ function editex() {
 
     // Set the event for insert the formula in editor
     insert.on("click", function () {
-        insertEditex(editareaBox.val());
+        insertEditex(editareaBox.val().trim());
     });
 }

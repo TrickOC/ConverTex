@@ -1,6 +1,3 @@
-// Variable to confirm the MathJax is loaded
-let mathIsLoad = false;
-
 // Config of the MathJax
 window.MathJax = {
     options: {
@@ -54,7 +51,6 @@ window.MathJax = {
             MathJax.startup.defaultReady();
             MathJax.startup.promise.then(() => {
                 console.log('MathJax initial typesetting complete');
-                mathIsLoad = true;
             });
         }
     }
@@ -66,22 +62,3 @@ window.MathJax = {
     script.async = true;
     document.head.appendChild(script);
 })();
-
-window.refreshMathJax = function (editor) {
-    let content, options = window.Joomla.getOptions("refresh-mathjax");
-
-    if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
-        content = window.Joomla.editors.instances[editor].getValue();
-    } else {
-        content = (new Function('return ' + options.editor))();
-    }
-
-    if (content.match(/\[tex\]/g)) {
-        MathJax.startup.promise = MathJax.startup.promise
-            .then(() => {
-                return MathJax.typesetPromise();
-            })
-            .catch((err) => console.log('Typeset failed: ' + err.message));
-        return MathJax.startup.promise;
-    }
-}
