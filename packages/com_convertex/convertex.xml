@@ -6,7 +6,7 @@
     <authorEmail>patrick.carmo@aluno.ufop.edu.br</authorEmail>
     <authorUrl>https://triki.ufop.br/</authorUrl>
     <copyright>Copyright (C) - 2020 - Patrick Oliveira do Carmo. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later;</license>
+    <license>GNU General Public License version 3 or later; see LICENSE.txt</license>
     <version>1.1</version>
     <description>COM_CONVERTEX_XML_DESCRIPTION</description>
 
@@ -33,6 +33,7 @@
             <filename>controller.php</filename>
             <filename>convertex.php</filename>
             <filename>index.html</filename>
+            <filename>LICENSE.txt</filename>
         </files>
         <languages folder="administrator/components/com_convertex/language">
             <language tag="en-GB">en-GB/en-GB.com_convertex.ini</language>
