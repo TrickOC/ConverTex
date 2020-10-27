@@ -66,12 +66,12 @@ function insertEditex(insert) {
 
     window.parent.MathJax.texReset();
     let options = window.parent.MathJax.getMetricsFor(output);
-    options.display = display.checked;
+    options.display = false;
 
     window.parent.MathJax.tex2svgPromise(insert, options).then(function (node) {
         /** Use the API, if editor supports it **/
-        if (window.Joomla && window.Joomla.editors && window.Joomla.editors.instances && window.Joomla.editors.instances.hasOwnProperty(editor)) {
-            window.Joomla.editors.instances[editor].replaceSelection(node);
+        if (window.parent.Joomla && window.parent.Joomla.editors && window.parent.Joomla.editors.instances && window.parent.Joomla.editors.instances.hasOwnProperty(editor)) {
+            window.parent.Joomla.editors.instances[editor].replaceSelection(node);
         } else {
             window.parent.jInsertEditorText(node, editor);
         }
@@ -80,7 +80,6 @@ function insertEditex(insert) {
     }).catch(function (err) {
         console.error(err.message);
     });
-
     // Close the window of editor;
     window.parent.jModalClose();
     return false;

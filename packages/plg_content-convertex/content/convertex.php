@@ -131,6 +131,12 @@ class plgContentConverTex extends CMSPlugin
 				array('id' => 'Mathjax-options'),
 				array('refer' => 'refer')
 			);
+			JHtml::_(
+				'script',
+				'plugins/content/convertex/js/mathjax-load.js',
+				array('id' => 'Mathjax-load'),
+				array('refer' => 'refer')
+			);
 		}
 		else
 		{
