@@ -43,9 +43,16 @@ window.MathJax = {
 };
 
 (function () {
+    // Insert the mathjax source code
     let script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js';
     script.async = true;
+    document.head.appendChild(script);
+
+    // Insert the code for build the toolbar
+    script.src = (window.location.pathname.includes("administrator", 0)) ? "" : "administrator/";
+    script.src += "components/com_convertex/assets/js/toolbar.js";
+    script.async = false;
     document.head.appendChild(script);
 })();
 
