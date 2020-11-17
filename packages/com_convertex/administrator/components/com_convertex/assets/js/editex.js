@@ -95,64 +95,6 @@ function typeInTextarea(element, newText) {
     element.focus();
 }
 
-// Function for create the toolbar
-function createToolbar(discipline, element) {
-    let url = (window.location.pathname.includes("administrator", 0)) ? "" : "administrator/";
-    url += "components/com_convertex/assets/latex/toolbar.xml";
-    $.ajax({
-        type: "GET",
-        url: url,
-        dataType: "xml",
-        success: function (xml) {
-            element.hide();
-            let toolbar = "";
-            $(xml).find("discipline").each(function () {
-                if ($(this).attr("name") === discipline) {
-                    toolbar = $(this);
-                    return false;
-                }
-            });
-            if (toolbar === "") {
-                element.empty();
-                $("<p></p>")
-                    .addClass("alert").addClass("alert-danger")
-                    .attr("role", "alert")
-                    .text("ERRO in build the toolbar for discipline " + discipline)
-                    .appendTo(element);
-            } else {
-                element.empty();
-                toolbar.find("group").each(function () {
-                    $("<div></div>")
-                        .addClass("btn-group")
-                        .addClass("btn-group-sm")
-                        .attr("role", "group")
-                        .attr("aria-label", $(this).attr("name"))
-                        .attr("id", "ct_toolbar_group_" + $(this).attr("shortname"))
-                        .appendTo(element);
-                    $(this).find("item").each(function () {
-                        typeset(() => {
-                            $("<button></button>")
-                                .addClass("btn")
-                                .addClass("btn-primary")
-                                .attr("type", "button")
-                                .attr("data-insert", $(this).attr("insert"))
-                                .text('[tex]' + $(this).text() + '[/tex]')
-                                .on("click", function () {
-                                    let editareaBox = $("#ct_editarea_box");
-                                    let text = $(this).data("insert");
-                                    typeInTextarea(editareaBox, text);
-                                    refreshTexPreview($("#ct_preview_box span"), editareaBox.val());
-                                })
-                                .appendTo("#ct_toolbar_group_" + $(this).parent().attr("shortname"));
-                        });
-                    })
-                });
-            }
-            element.fadeIn();
-        }
-    });
-}
-
 function editex() {
     let discipline_selector = $("#ct_discipline .btn-group");
     let discipline_selected = discipline_selector.find(".active");
